@@ -44,6 +44,29 @@
             <h3>2.3 Combining Reviews and Sales</h3>
             <p>Since both data sets included the same game title multiple times based on the platform, I had to merge based on both the game title and platform. Both data sets are also vastly different in the number of observations. I decided to create two separate data sets in merging. One data set is the intersection of the data and only contains data that appears in both data sets. The other data set, called the union, contains all rows from both data sets. All this work was done in the <code>combining_vgs.R</code> file in the project folder. Next I imported both data frames into the <code>cleaning_vgs.R</code> file in the project folder for further cleaning.</p>
             <p>Since the differentiator between both data frames is their number of rows and most of my cleaning was regarding the columns, I created a function to iterate over both data sets to clean them. This cleaning included trimming the white space on the summary and publisher, turning the sales data into numeric, and adding the platform, publisher, and title as factors. I also turned all the release dates into a “Month, Year” format and combined the release date from VGChartz and Metacritic into one column. Next, I dropped all sales data except North America sales and total sales. I also dropped the extra release date column, and the index columns. I exported these datasets to <code>VGSales_union.csv</code> and <code>VGSales_intersect.csv</code>, respectively. The union had 68,288 observations, and the intersect had 12,288 observations. A description of each variable is contained in Table 1.</p>
+
+            <h4>Table 1: Data Dictionary</h4>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Column</th>
+                        <th>Type</th>
+                        <th>Source</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>game_title</td><td>Text</td><td>both</td><td>Title of the game</td></tr>
+                    <tr><td>platform</td><td>Text</td><td>both</td><td>Video game console abbreviation</td></tr>
+                    <tr><td>publisher</td><td>Text</td><td>VGChartz</td><td>The publisher of the game</td></tr>
+                    <tr><td>na_sales</td><td>Numeric</td><td>VGChartz</td><td>Units sold in North America</td></tr>
+                    <tr><td>total_sales</td><td>Numeric</td><td>VGChartz</td><td>Total global units sold</td></tr>
+                    <tr><td>summary</td><td>Text</td><td>Metacritic</td><td>Description of the game</td></tr>
+                    <tr><td>release_date</td><td>Date</td><td>both</td><td>Month and year of game release</td></tr>
+                    <tr><td>meta_score</td><td>Numeric</td><td>Metacritic</td><td>Critic score</td></tr>
+                    <tr><td>user_score</td><td>Numeric</td><td>Metacritic</td><td>User score</td></tr>
+                </tbody>
+            </table>
         </section>
 
         <section id="analysis">
