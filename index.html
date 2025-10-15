@@ -54,15 +54,97 @@
             <p>However, the correlation between sales and review scores was very weak. The correlation between total sales and meta score was 0.248, and between total sales and user score was 0.102. There was a moderate correlation between user score and meta score at 0.524. To test whether this was due to scale differences, I created a boxplot of the two scores, shown in Figure 1. Their medians are the same, but the mean difference is 1.67, which is somewhat significant.</p>
             <p>Figure 2's histogram shows meta scores had more high reviews while user scores had more low reviews. This may explain why meta score correlates better with sales than user score. Still, when I recalculated the correlation between meta score and total sales while filtering out low-selling games, the result dropped to 0.065—showing a weak relationship. Overall, high review scores may help reputation but do not drive significant sales.</p>
 
+            <figure>
+                <img src="images/scores_boxplot.png" alt="Boxplot comparing meta score and user score" />
+                <figcaption>Figure 1: Review Scores Boxplots.</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/review_score_histogram.png" alt="Histogram of meta and user scores" />
+                <figcaption>Figure 2: Review Score Histograms.</figcaption>
+            </figure>
+
             <h3>3.2 Video Game Publishers</h3>
             <p>To identify which publishers had the highest sales, I grouped the data by publisher and created a summary table showing averages of scores, sum of sales, and game counts. The top 10 publishers by total sales appear in Table 2, led by Nintendo with 1.9 billion units sold. Publishers with the most games tended to have the most sales, with a correlation of 0.715 between number of games and total sales.</p>
             <p>But this did not apply to review scores. The correlation between number of games and meta score was just -0.013, indicating no relationship. Figure 3 is a scatterplot showing number of games versus total sales. Figure 4 shows number of games versus meta score.</p>
             <p>I also compared the top 10 publishers by North American vs. total sales (Table 3). The same publishers appeared in both lists, though in different orders. Sales in North America accounted for 40-60<sup>%</sup> of total sales—highlighting the region's importance.</p>
 
+            <h4>Table 2: Top 10 Publishers by Total Sales</h4>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Publisher</th>
+                        <th>Total Sales</th>
+                        <th>NA Sales</th>
+                        <th>User Score</th>
+                        <th>Meta Score</th>
+                        <th># of Games</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Nintendo</td><td>1,915,460,000</td><td>859,150,000</td><td>7.87</td><td>77.40</td><td>1410</td></tr>
+                    <tr><td>Activision</td><td>727,710,000</td><td>428,300,000</td><td>6.80</td><td>70.96</td><td>1567</td></tr>
+                    <tr><td>Electronic Arts</td><td>659,150,000</td><td>329,130,000</td><td>6.94</td><td>73.82</td><td>1591</td></tr>
+                    <tr><td>Sony Computer Entertainment</td><td>557,090,000</td><td>239,880,000</td><td>7.55</td><td>74.98</td><td>1365</td></tr>
+                    <tr><td>Ubisoft</td><td>500,080,000</td><td>260,830,000</td><td>7.01</td><td>70.73</td><td>1646</td></tr>
+                    <tr><td>EA Sports</td><td>497,620,000</td><td>276,250,000</td><td>6.73</td><td>79.11</td><td>800</td></tr>
+                    <tr><td>THQ</td><td>339,470,000</td><td>208,390,000</td><td>7.26</td><td>69.08</td><td>1092</td></tr>
+                    <tr><td>Sega</td><td>291,080,000</td><td>119,560,000</td><td>7.36</td><td>72.30</td><td>2191</td></tr>
+                    <tr><td>Capcom</td><td>274,690,000</td><td>104,710,000</td><td>7.58</td><td>74.75</td><td>1062</td></tr>
+                    <tr><td>Rockstar Games</td><td>263,430,000</td><td>125,600,000</td><td>7.76</td><td>82.95</td><td>175</td></tr>
+                </tbody>
+            </table>
+
+            <figure>
+                <img src="images/publisher_sales_scatterplot.png" alt="Scatterplot of number of games vs total sales" />
+                <figcaption>Figure 3: Number of Games by Publisher vs Total Sales.</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/publisher_meta_score_scatterplot.png" alt="Scatterplot of number of games vs meta score" />
+                <figcaption>Figure 4: Number of Games by Publisher vs Meta Score.</figcaption>
+            </figure>
+
+            <h4>Table 3: Top Publishers by NA vs. Total Sales</h4>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>North American Games Sold</th>
+                        <th>Total Games Sold</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Nintendo</td><td>Nintendo</td></tr>
+                    <tr><td>Activision</td><td>Activision</td></tr>
+                    <tr><td>Electronic Arts</td><td>Electronic Arts</td></tr>
+                    <tr><td>EA Sports</td><td>Sony Computer Entertainment</td></tr>
+                    <tr><td>Ubisoft</td><td>Ubisoft</td></tr>
+                    <tr><td>Sony Computer Entertainment</td><td>EA Sports</td></tr>
+                    <tr><td>THQ</td><td>THQ</td></tr>
+                    <tr><td>Rockstar Games</td><td>Sega</td></tr>
+                    <tr><td>Sega</td><td>Capcom</td></tr>
+                    <tr><td>Capcom</td><td>Rockstar Games</td></tr>
+                </tbody>
+            </table>
             <h3>3.3 Release Date</h3>
             <p>I created a data frame grouping games by release month to examine how game releases and sales changed over time. There was a correlation of 0.533 between date and number of games released. Figure 5 shows a spike in game releases around 2010, likely due to new game consoles. However, sales remained more consistent over time.</p>
             <p>The correlation between total sales and release date was 0.273, and between NA sales and release date was 0.229—both weak. Figure 6 shows the sales over time. Many of the top sales months were October and November, suggesting the holiday season boosts game sales. The same months also had the most game releases.</p>
             <p>Lastly, I looked at review scores over time. Figure 7 shows both user and meta scores dropped after 2000. Meta scores started increasing again after 2010, while user scores continued declining. Correlation between meta score and date was -0.325, and between user score and date was -0.837, suggesting users became more critical over time or newer games underperformed in public opinion.</p>
+
+            <figure>
+                <img src="images/release_vs_games_and_sales.png" alt="Number of games and total sales over time" />
+                <figcaption>Figure 5: Number of Games Released and Total Sales by Month.</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/sales_by_release_date.png" alt="Sales vs release date" />
+                <figcaption>Figure 6: Total Sales by Release Date.</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/review_scores_by_date.png" alt="Review scores by release date" />
+                <figcaption>Figure 7: Review Scores by Release Date.</figcaption>
+            </figure>
         </section>
 
         <section id="conclusion">
